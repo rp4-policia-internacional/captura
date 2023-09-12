@@ -1,8 +1,8 @@
 export default interface ICreateCapturaDTO{
-    nome: string;
-    sobrenome: string;
-    endereco: string;
-    dataNascimento: Date;
-    quantidadeMacas: number;
+    id_criminoso: string;
+    id_pais_capturado: string;
+    id_pais_origem: string;
+    data: Date;
+    probabilidade: number;
 
 }

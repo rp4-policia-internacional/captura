@@ -14,9 +14,9 @@ class CreateCapturaRepository{
 
     public async execute(data: ICreateCapturaDTO): Promise<CapturaEntity>{
         // regra de negocio aqui
-        if(data.quantidadeMacas <= 2){
-            throw new AppError("Quantidade mínima de maças é 3", 400);
-        }
+        //if(data){
+        //    throw new AppError("Este é um error", 400);
+        //}
 
         const captura = await this.capturaRepository.create(data);
         return captura;

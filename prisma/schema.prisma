@@ -10,4 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Captura {
+  id String @id @default(uuid())
+  id_criminoso String @db.VarChar 
+  id_pais_capturado String @db.VarChar 
+  id_pais_origem String @db.VarChar 
+  data DateTime @db.Date
+  probabilidade Int @db.Integer
+}
+
+
 

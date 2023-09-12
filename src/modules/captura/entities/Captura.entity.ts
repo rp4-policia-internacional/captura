@@ -1,18 +1,19 @@
 class CapturaEntity{
     id: string;
-    nome: string;
-    sobrenome: string;
-    endereco: string;
-    dataNascimento: Date;
-    quantidadeMacas: number;
+    id_criminoso: string;
+    id_pais_capturado: string;
+    id_pais_origem: string;
+    data: Date;
+    probabilidade: number;
 
-    constructor(id: string, nome: string, sobrenome: string, endereco: string, dataNascimento: Date, quantidadeMacas: number){
+
+    constructor(id: string, id_criminoso: string, id_pais_capturado: string, id_pais_origem: string, data: Date, probabilidade: number) {
         this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.endereco = endereco;
-        this.dataNascimento = dataNascimento;
-        this.quantidadeMacas = quantidadeMacas;
+        this.id_criminoso = id_criminoso;
+        this.id_pais_capturado = id_pais_capturado;
+        this.id_pais_origem = id_pais_origem;
+        this.data = data;
+        this.probabilidade = probabilidade;
     }
 
 }

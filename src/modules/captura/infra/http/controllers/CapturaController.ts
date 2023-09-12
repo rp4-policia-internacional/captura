@@ -6,15 +6,15 @@ export default class CapturaController{
     public async create(req: Request, res: Response): Promise<Response> {
         const createCaptura = container.resolve(CreateCapturaService);
 
-        const {nome, sobrenome, endereco, dataNascimento, quantidadeMacas} = req.body;
+        const {id_criminoso, id_pais_capturado, id_pais_origem, data, probabilidade} = req.body;
         
-        const formatedDate = new Date(dataNascimento).toISOString();
+        const formatedDate = new Date(data).toISOString();
         const createdCaptura = await createCaptura.execute({
-            nome, 
-            sobrenome, 
-            endereco, 
-            dataNascimento: new Date(formatedDate), 
-            quantidadeMacas
+            id_criminoso, 
+            id_pais_capturado, 
+            id_pais_origem, 
+            data: new Date(formatedDate), 
+            probabilidade
         });
 
         return res.json(createdCaptura).status(201).send();
