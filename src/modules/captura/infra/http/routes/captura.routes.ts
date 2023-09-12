@@ -6,5 +6,9 @@ const capturaRoutes = Router();
 const controller = new CapturaController();
 
 capturaRoutes.post("/", controller.create);
+capturaRoutes.delete("/:id", controller.delete);
+capturaRoutes.get("/:id", controller.getOne);
+capturaRoutes.get("/", controller.getAll);
+capturaRoutes.put("/", controller.update);
 
 export default capturaRoutes;

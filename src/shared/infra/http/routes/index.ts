@@ -3,6 +3,6 @@ import { Router } from "express";
 
 const routes = Router();
 
-routes.use("/people", capturaRoutes);
+routes.use("/captura", capturaRoutes);
 
 export default routes;

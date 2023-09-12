@@ -3,14 +3,14 @@ import ICapturaRepository from "../repositories/ICapturaRepository";
 import AppError from "@shared/errors/AppError";
 
 @injectable()
-class DeleteCapturaService{
+class DeleteCapturaService {
 
     constructor(
         @inject('CapturaRepository')
         private capturaRepository: ICapturaRepository
     ){} 
     
-    public async execute(id: string){
+    public async execute(id: string) {
         const findCaptura = await this.capturaRepository.findById(id);
 
 
