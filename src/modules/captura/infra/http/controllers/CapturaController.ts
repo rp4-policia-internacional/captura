@@ -21,7 +21,7 @@ export default class CapturaController{
             probabilidade
         });
 
-        return res.json(createdCaptura).status(201).send();
+        return res.json(createdCaptura).status(201).send("Produto criado");
     }
 
     public async delete(req: Request, res: Response): Promise<Response> {
@@ -33,7 +33,7 @@ export default class CapturaController{
             id
         );
 
-        return res.json(deletedCaptura).status(202).send();
+        return res.json(deletedCaptura).status(200).send();
         
     }
 
@@ -46,7 +46,7 @@ export default class CapturaController{
             id
         );
 
-        return res.json(gotOneCaptura).status(200).send();
+        return res.json(gotOneCaptura).status(200).send("Ok");
 
     }
 
@@ -73,6 +73,6 @@ export default class CapturaController{
             probabilidade
         });
 
-        return res.json(createdCaptura).status(201).send();
+        return res.json(createdCaptura).status(201).send("Captura alterada com sucesso");
     }
 }

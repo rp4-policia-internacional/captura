@@ -1,0 +1,141 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Captura",
+        "description": "Documentação da api de captura.",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/captura/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "404": {
+                        "description": "Captura não encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "404": {
+                        "description": "Captura não encontrada"
+                    }
+                }
+            }
+        },
+
+        "/api/captura": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id_criminoso": {
+                                        "type": "string"
+                                    },
+                                    "id_pais_capturado": {
+                                        "type": "string"
+                                    },
+                                    "id_pais_origem": {
+                                        "type": "string"
+                                    },
+                                    "data": {
+                                        "type": "string",
+                                        "formate": "date"
+                                    },
+                                    "probabilidade": {
+                                        "type": "number"
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produto criado"
+                    },
+                    "404": {
+                        "description": "Captura não encontrada"
+                    }
+                }
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "id_criminoso": {
+                                        "type": "string"
+                                    },
+                                    "id_pais_capturado": {
+                                        "type": "string"
+                                    },
+                                    "id_pais_origem": {
+                                        "type": "string"
+                                    },
+                                    "data": {
+                                        "type": "string",
+                                        "formate": "date"
+                                    },
+                                    "probabilidade": {
+                                        "type": "number"
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Captura alterado com sucesso"
+                    },
+                    "404": {
+                        "description": "Captura não encontrada"
+                    }
+                }
+            },
+            "get": {
+                "responses": {
+                    "200": {},
+                    "404": {
+                        "description": "Captura não encontrada"
+                    }
+                }
+            }
+        }
+            
+    
+
+
+    }
+}
