@@ -13,11 +13,20 @@ class CreateCapturaRepository{
     ){}
 
     public async execute(data: ICreateCapturaDTO): Promise<CapturaEntity>{
-        // regra de negocio aqui
+        
+        data.probabilidade = Math.random();
+        let numeroAleatorio = data.probabilidade * 11; 
 
+
+        while(numeroAleatorio > 10 || numeroAleatorio < 1) {
+            numeroAleatorio = Math.random() * 11;
+        }
+
+        data.probabilidade = numeroAleatorio;
         const createCaptura = await this.capturaRepository.create(data);
         return createCaptura;
     }
+
 }
 
 export default CreateCapturaRepository;
