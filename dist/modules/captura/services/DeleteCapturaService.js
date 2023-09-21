@@ -1,0 +1,28 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _tsyringe = require("tsyringe");
+var _ICapturaRepository = _interopRequireDefault(require("../repositories/ICapturaRepository"));
+var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
+var _dec, _dec2, _dec3, _dec4, _class;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+let DeleteCapturaService = (_dec = (0, _tsyringe.injectable)(), _dec2 = function (target, key) {
+  return (0, _tsyringe.inject)('CapturaRepository')(target, undefined, 0);
+}, _dec3 = Reflect.metadata("design:type", Function), _dec4 = Reflect.metadata("design:paramtypes", [typeof _ICapturaRepository.default === "undefined" ? Object : _ICapturaRepository.default]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = class DeleteCapturaService {
+  constructor(capturaRepository) {
+    this.capturaRepository = capturaRepository;
+  }
+  async execute(id) {
+    const findCaptura = await this.capturaRepository.findById(id);
+    if (!findCaptura) {
+      throw new _AppError.default("Captura não encontrada", 404);
+    }
+    await this.capturaRepository.delete(id);
+    return;
+  }
+}) || _class) || _class) || _class) || _class);
+var _default = DeleteCapturaService;
+exports.default = _default;
