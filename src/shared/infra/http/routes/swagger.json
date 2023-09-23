@@ -76,7 +76,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Produto criado"
+                        "description": "Captura criado"
                     },
                     "404": {
                         "description": "Captura não encontrada"

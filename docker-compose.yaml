@@ -10,11 +10,38 @@ services:
       - aplicacao
 
   aplicacaocaptura:
-    image: danielly/captura:latest
+    image: rp4/captura:latest
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/captura?schema=public
     ports: 
       - 3333:3333 
+    networks:
+      - aplicacao
+  
+  aplicacaovitima:
+    image: rp4/vitima:latest
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/vitima?schema=public
+    ports: 
+      - 3334:3333 
+    networks:
+      - aplicacao
+
+  aplicacaocriminoso:
+    image: rp4/criminoso:latest
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/criminoso?schema=public
+    ports: 
+      - 3335:3333 
+    networks:
+      - aplicacao
+
+  aplicacaoextradicao:
+    image: rp4/extradicao:latest
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/extradicao?schema=public
+    ports: 
+      - 3336:3333 
     networks:
       - aplicacao
 networks:
