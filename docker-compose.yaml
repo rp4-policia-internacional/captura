@@ -23,7 +23,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/vitima?schema=public
     ports: 
-      - 3334:3333 
+      - 3337:3333 
     networks:
       - aplicacao
 
@@ -31,8 +31,9 @@ services:
     image: rp4/criminoso:latest
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/criminoso?schema=public
+      - PORT=3333
     ports: 
-      - 3335:3333 
+      - 3338:3333 
     networks:
       - aplicacao
 
