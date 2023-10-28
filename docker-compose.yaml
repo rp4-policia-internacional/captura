@@ -7,43 +7,100 @@ services:
     ports: 
       - 2020:5432
     networks:
-      - aplicacao
+      - kong-net
+    volumes:
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   aplicacaocaptura:
-    image: rp4/captura:latest
+    image: daniellyccn/rp4-captura:main
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/captura?schema=public
     ports: 
       - 3333:3333 
     networks:
-      - aplicacao
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
   
   aplicacaovitima:
-    image: rp4/vitima:latest
+    image: daniellyccn/rp4-vitima:main
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/vitima?schema=public
     ports: 
       - 3337:3333 
     networks:
-      - aplicacao
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
 
   aplicacaocriminoso:
-    image: rp4/criminoso:latest
+    image: daniellyccn/rp4-criminoso:main
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/criminoso?schema=public
       - PORT=3333
     ports: 
       - 3338:3333 
     networks:
-      - aplicacao
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
 
   aplicacaoextradicao:
-    image: rp4/extradicao:latest
+    image: daniellyccn/rp4-extradicao:main
     environment:
       - DATABASE_URL=postgresql://postgres:value@bancodados:5432/extradicao?schema=public
     ports: 
       - 3336:3333 
     networks:
-      - aplicacao
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
+
+  aplicacaopais:
+    image: daniellyccn/rp4-pais:main
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/pais?schema=public
+    ports: 
+      - 3340:3333 
+    networks:
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
+
+  aplicacaoresgate:
+    image: daniellyccn/rp4-resgate:main
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/resgate?schema=public
+    ports: 
+      - 3341:3333 
+    networks:
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
+
+  aplicacaorepatriacao:
+    image: daniellyccn/rp4-repatriacao:main
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/repatriacao?schema=public
+    ports: 
+      - 3342:3333 
+    networks:
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
+      
 networks:
-  aplicacao:
+  kong-net:
+    external: true
