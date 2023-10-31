@@ -75,4 +75,6 @@ export default class CapturaController{
 
         return res.json(createdCaptura).status(201).send("Captura alterada com sucesso");
     }
+
+
 }

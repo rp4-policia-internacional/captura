@@ -100,6 +100,18 @@ services:
     depends_on:
       bancodados:
         condition: service_healthy
+
+  aplicacaologin:
+    image: daniellyccn/rp4-login:main
+    environment:
+      - DATABASE_URL=postgresql://postgres:value@bancodados:5432/login?schema=public
+    ports: 
+      - 3343:3333 
+    networks:
+      - kong-net
+    depends_on:
+      bancodados:
+        condition: service_healthy
       
 networks:
   kong-net:
